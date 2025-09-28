@@ -1,0 +1,13 @@
+
+# Dockerfile.superset
+FROM apache/superset:2.1.0
+
+USER root
+
+# Upgrade pip
+RUN pip install --upgrade pip
+
+# Install Trino drivers only (no [trino] extra)
+RUN pip install sqlalchemy-trino trino
+
+USER superset
